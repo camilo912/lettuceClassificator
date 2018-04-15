@@ -12,7 +12,7 @@ if(__name__ == "__main__"):
     model = joblib.load('model.pkl')
     for i in range(13,101):
         image_name = str(i) + ".jpg"
-        image = cv2.imread("conPlagas/" + image_name)
+        image = cv2.resize(cv2.imread("conPlagas/" + image_name), (400,400))
         image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         segments = slic(image, n_segments = 100, sigma = 5)
         for (i, segVal) in enumerate(np.unique(segments)):
